@@ -1,2 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+
 .App {
+	display: flex;
+	flex-wrap: wrap;
+}
+.theCard {
+	margin: 1em auto;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	width: 280px;
+	border: solid 2px black;
+	border-radius: 1rem;
+	padding: 0.7em;
+}
+.typeBox {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 0.5em;
+}
+.type {
+	border: solid 2px black;
+	border-radius: 0.7em;
+	padding: 0.5em;
+}
+.Grass {
+	background-color: mediumseagreen;
+}
+.Poison {
+	background-color: mediumpurple;
+}
+.Fire {
+	background-color: orangered;
+}
+.Water {
+	background-color: cornflowerblue;
+}
+.Flying {
+	background-color: plum;
+}
+.Bug {
+	background-color: seagreen;
+}
+.Normal {
+	background-color: sandybrown;
+}
+.Ground {
+	background-color: sienna;
+}
+.Fairy {
+	background-color: palevioletred;
+}
+.Electric {
+	background-color: gold;
+}
+p {
+	font-size: 1.2rem;
+	font-family: "VT323", monospace;
+	margin: 0.1em;
+}
+
+img {
+	padding-top: 0.5em;
+	width: 100px;
+	height: 100px;
+}
+
+/* h1 {
+	font-size: 2.5rem;
+	font-family: "VT323", monospace;
+	text-transform: uppercase;
+	position: center;
+	width: 100vw;
+	text-align: center;
+} */
+.logo {
+	margin: 1em 40%;
+	width: 250px;
+}
+
+h2 {
+	font-size: 2rem;
+	font-family: "VT323", monospace;
+	margin: 0.2em;
 }
