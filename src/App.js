@@ -1,6 +1,4 @@
 import React from "react";
-// import pokemonList from "./pokemon/pokemon.js";
-// import logo from "./pokemon_logo.png";
 import "./App.css";
 
 const getPokemonData = list => {
