@@ -1,0 +1,54 @@
+version: 2.1
+jobs:
+  test:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: install-npm
+          command: "sudo npm install -g npm@latest"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-dependencies
+          command: "npm install"
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: unit-test
+          command: "npm run test"
+  build_deploy:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-dependencies
+          command: "npm install"
+      - run:
+          name: build
+          command: "npm run build"
+      - run:
+          name: install-netlify
+          command: "sudo npm install netlify-cli -g"
+      - run:
+          name: link-netlify
+          command: "netlify link --name react-pokemon-lab"
+      - run:
+          name: netlify-deploy
+          command: "netlify deploy --prod --dir=build"
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - test
+      - build_deploy:
+          requires:
+            - test
